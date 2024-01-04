@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import "./App.css";
 const API_URL = "http://localhost:8080";
 async function readRecord(response: Response): Promise<string> {
@@ -20,7 +20,7 @@ function App() {
       .finally(() => { if (active) setBusy(false); });
     return () => { active = false; };
   }, []);
-  async function updateData(event: React.FormEvent) {
+  async function updateData(event: FormEvent) {
     event.preventDefault(); setBusy(true); setError("");
     try {
       const value = await readRecord(await fetch(API_URL, { method: "POST", body: JSON.stringify({ data: draft }), headers: { "Content-Type": "application/json" } }));
