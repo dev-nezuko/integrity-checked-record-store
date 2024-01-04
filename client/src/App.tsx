@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import "./App.css";
-const API_URL = "http://localhost:8080";
+const API_URL = "/api/record";
 async function readRecord(response: Response): Promise<string> {
   if (!response.ok) throw new Error(`Request failed (${response.status})`);
   const body = await response.json();
