@@ -12,7 +12,8 @@
     "start": "node dist/server.js",
     "dev": "tsc -p tsconfig.build.json && node --watch dist/server.js",
     "test": "vitest run",
-    "lint": "eslint . && tsc --noEmit"
+    "lint": "eslint . && tsc --noEmit",
+    "keygen": "tsc -p tsconfig.build.json && node dist/keygen.js"
   },
   "dependencies": {
     "express": "^5.3.0"
