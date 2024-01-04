@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# build output
+build/
+dist/
+*.tsbuildinfo
+
+# test output
+coverage/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# logs and caches
+*.log
+npm-debug.log*
+.vite/
+.eslintcache
+tmp/
+
+# editors and OS
+.DS_Store
+.vscode/
+.idea/
+.github/
