@@ -1,0 +1,21 @@
+{
+  "publicKey": "BJMNFKMum3PrsaUnFnPyEbDhIeSZTzW0mEYTpED8o84",
+  "versions": [
+    {
+      "version": 1,
+      "data": "Hello World",
+      "signedAt": "2026-01-01T09:01:00.000Z",
+      "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash": "af6bcb9c54cf7dcbea39884b5ecb75d80d381676d9be49f5d6ac957485f30d1b",
+      "signature": "S/FCq5AGvOfMRHWGC0lOi1azjrniGJEgYST5hAosxOvm02U9sToY32xokER36/hiTv6VUTsuOywnJIAFZh1OAA=="
+    },
+    {
+      "version": 2,
+      "data": "Ünïcode, quotes \" and emoji-free text\nline two",
+      "signedAt": "2026-01-01T09:02:00.000Z",
+      "prevHash": "af6bcb9c54cf7dcbea39884b5ecb75d80d381676d9be49f5d6ac957485f30d1b",
+      "hash": "2359e7fc5e28b0cdcbba193bf76ad68371e70cf24b0bfc149b35314127069e29",
+      "signature": "fP0gpGQf+XiMps282iJEfkg7ltc8SF0kEf5JFkNNEnOVfcfSoJDYZw9Es+0F4X7ppYtQj5OMENwe3ztHfRegCw=="
+    }
+  ]
+}
