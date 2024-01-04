@@ -1,4 +1,7 @@
 import { createPublicKey } from "node:crypto";
+import { mkdtempSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 import { createApp } from "./app.js";
@@ -93,5 +96,20 @@ describe("tampering and restore", () => {
     await request(app).post("/api/record/restore").send({ version: foreign }).expect(422);
     await request(app).post("/api/record/restore").send({ version: { version: 1 } }).expect(400);
     expect((await request(app).get("/api/record")).body.version).toBe(1);
+  });
+});
+
+describe("static client", () => {
+  it("serves the built client next to the API when clientDir is set", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "client-"));
+    writeFileSync(join(dir, "index.html"), "<!doctype html><title>record</title>");
+    const app = createApp({ signingKey: key, clientDir: dir });
+    const page = await request(app).get("/").expect(200);
+    expect(page.text).toContain("<title>record</title>");
+    await request(app).get("/api/record").expect(200);
+  });
+
+  it("serves no pages without clientDir", async () => {
+    await request(makeApp()).get("/").expect(404);
   });
 });

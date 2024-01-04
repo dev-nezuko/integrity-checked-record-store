@@ -10,6 +10,8 @@ export interface AppOptions {
   allowTamperDemo?: boolean;
   maxVersions?: number;
   now?: () => Date;
+  /** Built client to serve from the same origin, as the Docker image does. */
+  clientDir?: string;
 }
 
 function readData(body: unknown): string | null {
@@ -70,6 +72,8 @@ export function createApp(options: AppOptions = {}) {
       res.json(store.tamperLatest(data));
     });
   }
+
+  if (options.clientDir) app.use(express.static(options.clientDir));
 
   // body-parser errors carry an HTTP status; answer them as JSON instead of Express's HTML page.
   const jsonErrors: ErrorRequestHandler = (err, _req, res, next) => {

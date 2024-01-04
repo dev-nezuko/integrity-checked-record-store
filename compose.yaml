@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        VITE_RECORD_PUBLIC_KEY: ${VITE_RECORD_PUBLIC_KEY:-}
+    environment:
+      RECORD_SIGNING_KEY: ${RECORD_SIGNING_KEY:-}
+      ALLOW_TAMPER_DEMO: ${ALLOW_TAMPER_DEMO:-false}
+    ports:
+      - "127.0.0.1:8080:8080"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
